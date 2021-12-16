@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getSearchRequest, getWhereRequest } from '../utils/api';
+import { getSearchRequest, getWhereRequest, getWhereRequestSeries } from '../utils/api';
 import { Link } from 'react-router-dom';
 
 function Mainpage() {
@@ -14,8 +14,8 @@ function Mainpage() {
     useEffect(() => {
         async function getSearch() {
             const movie = await getSearchRequest(id);
-            setMovie(movie[0])
-            const where = await getWhereRequest(movie[0].id);
+            setMovie(movie[0]);
+            const where = movie[0].media_type !== 'tv' ? await getWhereRequest(movie[0].id) : await getWhereRequestSeries(movie[0].id);
             setWhere(where);
         }
 
@@ -27,7 +27,7 @@ function Mainpage() {
 
         setQuery(e.target.value);
 
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=e333684dcb3e9eac6a70505572519a23&language=en-US&query=${query}`).then((res) => res.json()).then((data) => {
+        fetch(`https://api.themoviedb.org/3/search/multi?api_key=e333684dcb3e9eac6a70505572519a23&language=en-US&query=${query}`).then((res) => res.json()).then((data) => {
             if (!data.errors) {
                 setMovies(data.results);
                 console.log(data.results)
@@ -42,11 +42,18 @@ function Mainpage() {
             <div className="flex w-screen z-50 absolute justify-end">
                 <div className="flex flex-col">
                     <input className=" w-56 mt-4 mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
-                    <div id="searchDiv">
+                    <div className="hover:block" id="searchDiv">
                         <ul className="flex flex-col gap-y-1 p-1">
                             {movies.map((resultMovie, index) => (
+                                resultMovie.media_type === 'tv' ? 
                                 index <= 3 && resultMovie.poster_path &&
-                                <Link to={`/${resultMovie.title}`}>
+                                    <Link to={`/${resultMovie.name}`}>
+                                    <div className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
+                                        <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
+                                        <li className="text-black">{resultMovie.name}</li>
+                                    </div>
+                                </Link> : 
+                                index <= 3 && resultMovie.poster_path &&<Link to={`/${resultMovie.title}`}>
                                     <div className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
                                         <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
                                         <li className="text-black">{resultMovie.title}</li>
