@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getSearchRequest, getWhereRequest } from '../utils/api';
+import { Link } from 'react-router-dom';
 
 function Mainpage() {
 
     const { id } = useParams();
     const [where, setWhere] = useState([]);
     const [moviemovie, setMovie] = useState([]);
+    const [movies, setMovies] = useState([]);
+    const [query, setQuery] = useState("");
 
     useEffect(() => {
         async function getSearch() {
@@ -19,10 +22,41 @@ function Mainpage() {
         getSearch();
     }, [id]);
 
-    console.log(where)
+    const onChange = (e) => {
+        e.preventDefault();
+
+        setQuery(e.target.value);
+
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=e333684dcb3e9eac6a70505572519a23&language=en-US&query=${query}`).then((res) => res.json()).then((data) => {
+            if (!data.errors) {
+                setMovies(data.results);
+                console.log(data.results)
+            } else {
+                setMovies([]);
+            }
+        });
+    }
 
     return (
         <div className="w-screen h-screen flex flex-col bg-slate-800">
+            <div className="flex w-screen z-50 absolute justify-end">
+                <div className="flex flex-col">
+                    <input className=" w-56 mt-4 mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
+                    <div id="searchDiv">
+                        <ul className="flex flex-col gap-y-1 p-1">
+                            {movies.map((resultMovie, index) => (
+                                index <= 3 && resultMovie.poster_path &&
+                                <Link to={`/${resultMovie.title}`}>
+                                    <div className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
+                                        <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
+                                        <li className="text-black">{resultMovie.title}</li>
+                                    </div>
+                                </Link>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </div>
             {/* <h1 className="font-semibold text-3xl text-emerald-400">Murloc</h1> */}
             <div className="w-screen flex flex-col">
                 <div className=" z-10">
@@ -30,7 +64,7 @@ function Mainpage() {
                     <div className=" bg-gradient-to-l dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 h-2/3 w-full absolute object-cover z-10"></div>
                     <div className=" bg-gradient-to-r dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 h-2/3 w-full absolute object-cover z-10"></div>
                     <div className=" bg-gradient-to- dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 h-2/3 w-full absolute object-cover z-10"></div>
-                    <img className="h-2/3 w-full absolute object-cover" src={`https://image.tmdb.org/t/p/original${moviemovie.backdrop_path}`} alt={moviemovie.name}></img>
+                    <img className="h-2/3 w-full absolute object-cover object-[0px,-100px]" src={`https://image.tmdb.org/t/p/original${moviemovie.backdrop_path}`} alt={moviemovie.name}></img>
                 </div>
                 <div className="z-20 w-screen flex flex-col items-center pt-64">
                     <img className=" w-44 border border-white rounded shadow-lg shadow-black" src={`https://image.tmdb.org/t/p/original${moviemovie.poster_path}`} alt="" />
