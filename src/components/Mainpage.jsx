@@ -78,8 +78,8 @@ function Mainpage() {
                     <h1 className="md:text-6xl text-4xl font-semibold capitalize mb-8 text-white mt-4">{id.replace(/-/g, " ")}</h1>
                 </div>
             </div>
-            <div className=" text-white w-screen flex justify-center">
-                {where.SE && <div className="flex flex-col md:flex-row gap-y-9 md:gap-x-3 justify-between w-screen border-t border-slate-600 md:max-w-5xl max-w-xl pt-4 px-3 md:p-0">
+            <div className=" text-white w-screen flex justify-center bg-slate-800">
+                {where.SE && <div className="flex flex-col md:flex-row gap-y-9 md:gap-x-3 justify-evenly w-screen border-t border-slate-600 md:max-w-5xl max-w-xl pt-4 px-3 md:p-0">
                     {where.SE.buy &&
                         <div className="border-t border-slate-600 md:border-0 w-full text-center md:w-auto md:text-left">
                             <u className="font-semibold">Köp</u>
