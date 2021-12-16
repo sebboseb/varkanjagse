@@ -67,19 +67,19 @@ function Mainpage() {
             {/* <h1 className="font-semibold text-3xl text-emerald-400">Murloc</h1> */}
             <div className="w-screen flex flex-col">
                 <div className=" z-10">
-                    <div className=" bg-gradient-to-t dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-1/2 w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to-l dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-1/2 w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to-r dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-1/2 w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to- dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-1/2 w-full absolute object-cover z-10"></div>
-                    <img className="xl:h-2/3 h-1/2 w-full absolute object-cover xl:object-[0px,-100px]" src={`https://image.tmdb.org/t/p/original${moviemovie.backdrop_path}`} alt={moviemovie.name}></img>
+                    <div className=" bg-gradient-to-t dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
+                    <div className=" bg-gradient-to-l dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
+                    <div className=" bg-gradient-to-r dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
+                    <div className=" bg-gradient-to- dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
+                    <img className="xl:h-2/3 h-[430px] w-full absolute object-cover xl:object-[0px,-100px]" src={`https://image.tmdb.org/t/p/original${moviemovie.backdrop_path}`} alt={moviemovie.name}></img>
                 </div>
                 <div className="z-20 w-screen flex flex-col items-center pt-24 xl:pt-64">
                     <img className=" xl:w-44 w-32 border border-white rounded shadow-lg shadow-black" src={`https://image.tmdb.org/t/p/original${moviemovie.poster_path}`} alt="" />
                     <h1 className="xl:text-6xl text-4xl font-semibold capitalize mb-8 text-white mt-4">{id.replace(/-/g, " ")}</h1>
                 </div>
             </div>
-            <div className=" text-white w-screen flex justify-center bg-slate-800 mt-8 xl:mt-0">
-                {where.SE && <div className="flex flex-col xl:flex-row gap-y-9 xl:gap-x-3 justify-evenly w-screen border-t border-slate-600 xl:max-w-5xl max-w-xl pt-4 px-3 xl:p-0">
+            <div className=" text-white w-screen flex justify-center bg-slate-800 mt-8 xl:mt-0 z-50">
+                {where.SE && <div className="flex flex-col xl:flex-row gap-y-9 xl:gap-x-3 justify-evenly w-screen xl:border-t border-slate-600 xl:max-w-5xl max-w-xl px-3 xl:p-0">
                     {where.SE.buy &&
                         <div className="border-t border-slate-600 xl:border-0 w-full text-center xl:w-auto xl:text-left">
                             <u className="font-semibold">Köp</u>
