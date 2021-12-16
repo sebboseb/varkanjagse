@@ -60,21 +60,21 @@ function Mainpage() {
             {/* <h1 className="font-semibold text-3xl text-emerald-400">Murloc</h1> */}
             <div className="w-screen flex flex-col">
                 <div className=" z-10">
-                    <div className=" bg-gradient-to-t dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 h-2/3 w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to-l dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 h-2/3 w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to-r dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 h-2/3 w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to- dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 h-2/3 w-full absolute object-cover z-10"></div>
-                    <img className="h-2/3 w-full absolute object-cover object-[0px,-100px]" src={`https://image.tmdb.org/t/p/original${moviemovie.backdrop_path}`} alt={moviemovie.name}></img>
+                    <div className=" bg-gradient-to-t dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 md:h-2/3 w-full absolute object-cover z-10"></div>
+                    <div className=" bg-gradient-to-l dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 md:h-2/3 w-full absolute object-cover z-10"></div>
+                    <div className=" bg-gradient-to-r dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 md:h-2/3 w-full absolute object-cover z-10"></div>
+                    <div className=" bg-gradient-to- dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 md:h-2/3 w-full absolute object-cover z-10"></div>
+                    <img className="md:h-2/3 h-96 w-full absolute object-cover md:object-[0px,-100px]" src={`https://image.tmdb.org/t/p/original${moviemovie.backdrop_path}`} alt={moviemovie.name}></img>
                 </div>
-                <div className="z-20 w-screen flex flex-col items-center pt-64">
-                    <img className=" w-44 border border-white rounded shadow-lg shadow-black" src={`https://image.tmdb.org/t/p/original${moviemovie.poster_path}`} alt="" />
-                    <h1 className="text-6xl font-semibold capitalize mb-8 text-white mt-4">{id.replace(/-/g, " ")}</h1>
+                <div className="z-20 w-screen flex flex-col items-center pt-24 md:pt-64">
+                    <img className=" md:w-44 w-32 border border-white rounded shadow-lg shadow-black" src={`https://image.tmdb.org/t/p/original${moviemovie.poster_path}`} alt="" />
+                    <h1 className="md:text-6xl text-4xl font-semibold capitalize mb-8 text-white mt-4">{id.replace(/-/g, " ")}</h1>
                 </div>
             </div>
             <div className=" text-white w-screen flex justify-center">
-                {where.SE && <div className="flex gap-x-3 justify-between w-screen border-t border-slate-600 max-w-5xl pt-4">
+                {where.SE && <div className="flex flex-col md:flex-row gap-y-9 md:gap-x-3 justify-between w-screen border-t border-slate-600 md:max-w-5xl max-w-xl pt-4 px-3 md:p-0">
                     {where.SE.buy &&
-                        <div>
+                        <div className="border-t border-slate-600 md:border-0 w-full text-center md:w-auto md:text-left">
                             <u className="font-semibold">Köp</u>
                             <ul className="">
                                 {
@@ -88,7 +88,7 @@ function Mainpage() {
                         </div>
                     }
                     {where.SE.ads &&
-                        <div>
+                        <div className="border-t border-slate-600 md:border-0 w-full text-center md:w-auto md:text-left">
                             <u className="font-semibold">Reklam</u>
                             <ul className="">
                                 {where.SE.ads?.map((service) => (
@@ -100,7 +100,7 @@ function Mainpage() {
                         </div>
                     }
                     {where.SE.free &&
-                        <div>
+                        <div className="border-t border-slate-600 md:border-0 w-full text-center md:w-auto md:text-left">
                             <u className="font-semibold">Gratis</u>
                             <ul className="">
                                 {where.SE.free?.map((service) => (
@@ -111,7 +111,7 @@ function Mainpage() {
                         </div>
                     }
                     {where.SE.flatrate &&
-                        <div>
+                        <div className="border-t border-slate-600 md:border-0 w-full text-center md:w-auto md:text-left">
                             <u className="font-semibold">Streama</u>
                             <ul className="">
                                 {where.SE.flatrate?.map((service) => (
@@ -122,7 +122,7 @@ function Mainpage() {
                         </div>
                     }
                     {where.SE.rent &&
-                        <div>
+                        <div className="border-t border-slate-600 md:border-0 w-full text-center md:w-auto md:text-left">
                             <u className="font-semibold">Hyr</u>
                             <ul className="">
                                 {where.SE.rent?.map((service) => (
