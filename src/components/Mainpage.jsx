@@ -38,7 +38,7 @@ function Mainpage() {
     }
 
     return (
-        <div className="w-screen h-screen flex flex-col bg-slate-800">
+        <div className="w-screen h-auto md:h-screen flex flex-col bg-slate-800">
             <div className="flex w-screen z-50 absolute justify-end">
                 <div className="flex flex-col">
                     <input className=" w-56 mt-4 mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
