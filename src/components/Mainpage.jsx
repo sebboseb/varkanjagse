@@ -68,10 +68,10 @@ function Mainpage() {
             {/* <h1 className="font-semibold text-3xl text-emerald-400">Murloc</h1> */}
             <div className="w-screen flex flex-col">
                 <div className=" z-10">
-                    <div className=" bg-gradient-to-t dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to-l dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to-r dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to- dark:via-transparent via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
+                    <div className=" bg-gradient-to-t dark:via-transparent top-0 left-0 via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
+                    <div className=" bg-gradient-to-l dark:via-transparent top-0 left-0 via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
+                    <div className=" bg-gradient-to-r dark:via-transparent top-0 left-0 via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
+                    <div className=" bg-gradient-to- dark:via-transparent top-0 left-0 via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
                     <img className="xl:h-2/3 h-[430px] w-full absolute object-cover xl:object-[0px,-100px]" src={`https://image.tmdb.org/t/p/original${moviemovie.backdrop_path}`} alt={moviemovie.name}></img>
                 </div>
                 <div className="z-20 w-screen flex flex-col items-center pt-24 xl:pt-64">
@@ -142,12 +142,12 @@ function Mainpage() {
                         </div>
                     }
                 </div>
-                    
-                
-            </div>:
-                    <div className="w-screen flex justify-center">
-                        <h1 className=" w-full max-w-5xl text-white mt-20 text-center border-t border-slate-600">Inte tillgänglig</h1>
-                    </div>}
+
+
+            </div> :
+                <div className="w-screen flex justify-center bg-transparent">
+                    <h1 className=" w-full max-w-5xl text-white mt-20 text-center border-t border-slate-600">Inte tillgänglig</h1>
+                </div>}
         </div>
     )
 }
