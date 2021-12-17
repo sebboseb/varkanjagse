@@ -72,7 +72,7 @@ function Mainpage() {
                     <div className=" bg-gradient-to-l top-0 left-0 via-transparent from-slate-800 xl:h-[630px] h-[410px] w-full absolute z-10"></div>
                     <div className=" bg-gradient-to-r top-0 left-0 via-transparent from-slate-800 xl:h-[630px] h-[410px] w-full absolute z-10"></div>
                     <div className=" bg-gradient-to- top-0 left-0 via-transparent from-slate-800 xl:h-[630px] h-[410px] w-full absolute z-10"></div>
-                    <img className="xl:h-[630px] h-[430px] w-full absolute object-cover xl:object-[0px,-100px]" src={`https://image.tmdb.org/t/p/original${moviemovie.backdrop_path}`} alt={moviemovie.name}></img>
+                    <img className="xl:h-[630px] h-[410px] w-full absolute object-cover xl:object-[0px,-100px]" src={`https://image.tmdb.org/t/p/original${moviemovie.backdrop_path}`} alt={moviemovie.name}></img>
                 </div>
                 <div className="z-20 w-screen flex flex-col items-center pt-24 xl:pt-64">
                     <img className=" xl:w-44 w-32 border border-white rounded shadow-lg shadow-black" src={`https://image.tmdb.org/t/p/original${moviemovie.poster_path}`} alt="" />
