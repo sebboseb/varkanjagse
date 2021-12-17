@@ -20,7 +20,7 @@ function Mainpage() {
             const where = movie[0].media_type !== 'tv' ? await getWhereRequest(movie[0].id) : await getWhereRequestSeries(movie[0].id);
             setWhere(where);
 
-            setStyle("flex hover:bg-gray-300 transition delay-75 p-1 rounded");
+            // setStyle("flex hover:bg-gray-300 transition delay-75 p-1 rounded");
         }
 
         getSearch();
@@ -44,7 +44,7 @@ function Mainpage() {
         <div className="w-screen h-screen xl:h-screen flex flex-col bg-slate-800">
             <div className="flex w-screen z-50 absolute justify-center xl:justify-end">
                 <div className="flex flex-col">
-                    <input className=" w-72 xl:w-56 mt-4 xl:mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
+                    <input onClick={() => setStyle("flex hover:bg-gray-300 transition delay-75 p-1 rounded")} className=" w-72 xl:w-56 mt-4 xl:mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
                     <div className="hover:block" id="searchDiv">
                         <ul className="flex flex-col gap-y-1 p-1">
                             {movies.map((resultMovie, index) => (
