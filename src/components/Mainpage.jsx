@@ -10,12 +10,12 @@ function Mainpage() {
     const [moviemovie, setMovie] = useState([]);
     const [movies, setMovies] = useState([]);
     const [query, setQuery] = useState("");
-    const [style, setStyle] = useState("flex flex-col gap-y-1 p-1");
+    const [style, setStyle] = useState("flex flex-col gap-y-1 p-1 transition duration-75");
 
     useEffect(() => {
         async function getSearch() {
             const movie = await getSearchRequest(id);
-            movie.sort((b,c) => c.popularity - b.popularity)
+            // movie.sort((b, c) => c.popularity - b.popularity)
             setMovie(movie[0]);
             const where = movie[0].media_type !== 'tv' ? await getWhereRequest(movie[0].id) : await getWhereRequestSeries(movie[0].id);
             setWhere(where);
@@ -46,20 +46,20 @@ function Mainpage() {
                     <div className="hover:block" id="searchDiv">
                         <ul className={movies.length !== 0 ? style : "hidden"}>
                             {movies.map((resultMovie, index) => (
-                                resultMovie.media_type === 'tv' ? 
-                                index <= 3 && resultMovie.poster_path &&
+                                resultMovie.media_type === 'tv' ?
+                                    index <= 3 && resultMovie.poster_path &&
                                     <Link to={`/${resultMovie.name.replace(/ /g, "-")}`}>
-                                    <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
-                                        <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
-                                        <li className="text-black">{resultMovie.name}</li>
-                                    </div>
-                                </Link> : 
-                                index <= 3 && resultMovie.poster_path && resultMovie.id !== 295830 &&<Link to={`/${resultMovie.title.replace(/ /g, "-")}`}>
-                                    <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
-                                        <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
-                                        <li className="text-black">{resultMovie.title}</li>
-                                    </div>
-                                </Link>
+                                        <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
+                                            <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
+                                            <li className="text-black">{resultMovie.name}</li>
+                                        </div>
+                                    </Link> :
+                                    index <= 3 && resultMovie.poster_path && resultMovie.id !== 295830 && <Link to={`/${resultMovie.title.replace(/ /g, "-")}`}>
+                                        <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
+                                            <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
+                                            <li className="text-black">{resultMovie.title}</li>
+                                        </div>
+                                    </Link>
                             ))}
                         </ul>
                     </div>
@@ -79,8 +79,8 @@ function Mainpage() {
                     <h1 className="xl:text-6xl text-4xl font-semibold capitalize mb-8 text-white mt-4">{id.replace(/-/g, " ")}</h1>
                 </div>
             </div>
-            <div className=" text-white w-screen flex justify-center bg-slate-800 mt-8 xl:mt-0 z-50">
-                {where.SE && <div className="flex flex-col xl:flex-row gap-y-9 xl:gap-x-3 justify-evenly w-screen xl:border-t border-slate-600 xl:max-w-5xl max-w-xl px-3 xl:p-0 pb-8">
+            {where.SE ? <div className=" text-white w-screen flex justify-center bg-slate-800 mt-8 xl:mt-0 z-50">
+                <div className="flex flex-col xl:flex-row gap-y-9 xl:gap-x-3 justify-evenly w-screen xl:border-t border-slate-600 xl:max-w-5xl max-w-xl px-3 xl:p-0 pb-8">
                     {where.SE.buy &&
                         <div className="border-t border-slate-600 xl:border-0 w-full text-center xl:w-auto xl:text-left">
                             <u className="font-semibold">Köp</u>
@@ -141,8 +141,13 @@ function Mainpage() {
                             </ul>
                         </div>
                     }
-                </div>}
-            </div>
+                </div>
+                    
+                
+            </div>:
+                    <div className="w-screen flex justify-center">
+                        <h1 className=" w-full max-w-5xl text-white mt-20 text-center border-t border-slate-600">Inte tillgänglig</h1>
+                    </div>}
         </div>
     )
 }
