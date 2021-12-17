@@ -68,11 +68,11 @@ function Mainpage() {
             {/* <h1 className="font-semibold text-3xl text-emerald-400">Murloc</h1> */}
             <div className="w-screen flex flex-col">
                 <div className=" z-10">
-                    <div className=" bg-gradient-to-t dark:via-transparent top-0 left-0 via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to-l dark:via-transparent top-0 left-0 via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to-r dark:via-transparent top-0 left-0 via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
-                    <div className=" bg-gradient-to- dark:via-transparent top-0 left-0 via-transparent dark:from-letterboxd-bg from-slate-800 xl:h-2/3 h-[430px] w-full absolute object-cover z-10"></div>
-                    <img className="xl:h-2/3 h-[430px] w-full absolute object-cover xl:object-[0px,-100px]" src={`https://image.tmdb.org/t/p/original${moviemovie.backdrop_path}`} alt={moviemovie.name}></img>
+                    <div className=" bg-gradient-to-t top-0 left-0 via-transparent from-slate-800 xl:h-[630px] h-[410px] w-full absolute z-10"></div>
+                    <div className=" bg-gradient-to-l top-0 left-0 via-transparent from-slate-800 xl:h-[630px] h-[410px] w-full absolute z-10"></div>
+                    <div className=" bg-gradient-to-r top-0 left-0 via-transparent from-slate-800 xl:h-[630px] h-[410px] w-full absolute z-10"></div>
+                    <div className=" bg-gradient-to- top-0 left-0 via-transparent from-slate-800 xl:h-[630px] h-[410px] w-full absolute z-10"></div>
+                    <img className="xl:h-[630px] h-[430px] w-full absolute object-cover xl:object-[0px,-100px]" src={`https://image.tmdb.org/t/p/original${moviemovie.backdrop_path}`} alt={moviemovie.name}></img>
                 </div>
                 <div className="z-20 w-screen flex flex-col items-center pt-24 xl:pt-64">
                     <img className=" xl:w-44 w-32 border border-white rounded shadow-lg shadow-black" src={`https://image.tmdb.org/t/p/original${moviemovie.poster_path}`} alt="" />
@@ -80,7 +80,7 @@ function Mainpage() {
                 </div>
             </div>
             {where.SE ? <div className=" text-white w-screen flex justify-center bg-slate-800 mt-8 xl:mt-0 z-50">
-                <div className="flex flex-col xl:flex-row gap-y-9 xl:gap-x-3 justify-evenly w-screen xl:border-t border-slate-600 xl:max-w-5xl max-w-xl px-3 xl:p-0 pb-8">
+                <div className="flex flex-col xl:flex-row gap-y-9 xl:gap-x-3 justify-evenly w-screen xl:border-t border-slate-600 xl:max-w-5xl max-w-xl px-3 xl:p-0 xl:pt-4 pb-8">
                     {where.SE.buy &&
                         <div className="border-t border-slate-600 xl:border-0 w-full text-center xl:w-auto xl:text-left">
                             <u className="font-semibold">Köp</u>
