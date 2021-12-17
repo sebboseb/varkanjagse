@@ -67,7 +67,8 @@ function Mainpage() {
             </div>
             {/* <h1 className="font-semibold text-3xl text-emerald-400">Murloc</h1> */}
             <div className="w-screen flex flex-col">
-                <div className=" z-10 top-0 left-0">
+                <div className=" z-10">
+                    {/* top-0 left-0 */}
                     <div className=" bg-gradient-to-t via-transparent from-slate-800 xl:h-[630px] h-[430px] w-full absolute z-10"></div>
                     <div className=" bg-gradient-to-l via-transparent from-slate-800 xl:h-[630px] h-[430px] w-full absolute z-10"></div>
                     <div className=" bg-gradient-to-r via-transparent from-slate-800 xl:h-[630px] h-[430px] w-full absolute z-10"></div>
@@ -142,11 +143,14 @@ function Mainpage() {
                         </div>
                     }
                 </div>
-
-
-            </div> :
-                <div className="w-screen flex justify-center bg-transparent">
-                    <h1 className=" w-full max-w-5xl text-white mt-20 text-center border-t border-slate-600">Inte tillgänglig</h1>
+            </div>
+                :
+                <div className=" text-white w-screen flex justify-center bg-slate-800 mt-8 xl:mt-0 z-50">
+                    <div className="flex flex-col xl:flex-row gap-y-9 xl:gap-x-3 justify-evenly w-screen xl:border-t border-slate-600 xl:max-w-5xl max-w-xl px-3 xl:p-0 xl:pt-4 pb-8">
+                        <div className="border-t border-slate-600 xl:border-0 w-full text-center xl:w-auto xl:text-left">
+                            <u className="font-semibold">Inte Tillgänglig</u>
+                        </div>
+                    </div>
                 </div>}
         </div>
     )
