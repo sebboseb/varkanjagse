@@ -10,7 +10,7 @@ function Mainpage() {
     const [moviemovie, setMovie] = useState([]);
     const [movies, setMovies] = useState([]);
     const [query, setQuery] = useState("");
-    const [style, setStyle] = useState("flex hover:bg-gray-300 transition delay-75 p-1 rounded");
+    const [style, setStyle] = useState("flex flex-col gap-y-1 p-1");
 
     useEffect(() => {
         async function getSearch() {
@@ -19,8 +19,6 @@ function Mainpage() {
             setMovie(movie[0]);
             const where = movie[0].media_type !== 'tv' ? await getWhereRequest(movie[0].id) : await getWhereRequestSeries(movie[0].id);
             setWhere(where);
-
-            // setStyle("flex hover:bg-gray-300 transition delay-75 p-1 rounded");
         }
 
         getSearch();
@@ -44,20 +42,20 @@ function Mainpage() {
         <div className="w-screen h-screen xl:h-screen flex flex-col bg-slate-800">
             <div className="flex w-screen z-50 absolute justify-center xl:justify-end">
                 <div className="flex flex-col">
-                    <input onClick={() => setStyle("flex hover:bg-gray-300 transition delay-75 p-1 rounded")} className=" w-72 xl:w-56 mt-4 xl:mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
+                    <input onClick={() => setStyle("flex flex-col gap-y-1 p-1")} className=" w-72 xl:w-56 mt-4 xl:mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
                     <div className="hover:block" id="searchDiv">
-                        <ul className="flex flex-col gap-y-1 p-1">
+                        <ul className={movies.length !== 0 ? style : "hidden"}>
                             {movies.map((resultMovie, index) => (
                                 resultMovie.media_type === 'tv' ? 
                                 index <= 3 && resultMovie.poster_path &&
                                     <Link to={`/${resultMovie.name.replace(/ /g, "-")}`}>
-                                    <div onClick={() => setStyle("flex hover:bg-gray-300 transition delay-75 p-1 rounded")} className={style}>
+                                    <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
                                         <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
                                         <li className="text-black">{resultMovie.name}</li>
                                     </div>
                                 </Link> : 
-                                index <= 3 && resultMovie.poster_path && <Link to={`/${resultMovie.title.replace(/ /g, "-")}`}>
-                                    <div onClick={() => resultMovie.title.replace(/ /g, "-") !== id ? setStyle("hidden") : setStyle("flex hover:bg-gray-300 transition delay-75 p-1 rounded")} className={style}>
+                                index <= 3 && resultMovie.poster_path && resultMovie.id !== 295830 &&<Link to={`/${resultMovie.title.replace(/ /g, "-")}`}>
+                                    <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
                                         <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
                                         <li className="text-black">{resultMovie.title}</li>
                                     </div>

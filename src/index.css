@@ -4,10 +4,8 @@
 
 @layer components {
     #searchDiv {
-    @apply bg-white;
-    @apply w-56;
+    @apply w-72 bg-white rounded xl:w-56;
     display: none;
-    @apply rounded;
 }
     
     input:focus + #searchDiv { display: block; }
