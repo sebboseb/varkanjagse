@@ -77,7 +77,7 @@ function Mainpage() {
                 </div>
                 <div className="z-20 w-screen flex flex-col items-center pt-24 xl:pt-64">
                     <img className=" xl:w-44 w-32 border border-white rounded shadow-lg shadow-black" src={`https://image.tmdb.org/t/p/original${moviemovie.poster_path}`} alt="" />
-                    <h1 className="xl:text-6xl text-4xl font-semibold capitalize mb-8 text-white mt-4">{id.replace(/-/g, " ")}</h1>
+                    <h1 className="xl:text-6xl sm:text-4xl text-xl font-semibold capitalize mb-8 text-white mt-4">{id.replace(/-/g, " ")}</h1>
                 </div>
             </div>
             {where.SE ? <div className=" text-white w-screen flex justify-center bg-slate-800 mt-8 xl:mt-0 z-50">
@@ -148,7 +148,7 @@ function Mainpage() {
                 <div className=" text-white w-screen flex justify-center bg-slate-800 mt-8 xl:mt-0 z-50">
                     <div className="flex flex-col xl:flex-row gap-y-9 xl:gap-x-3 justify-evenly w-screen xl:border-t border-slate-600 xl:max-w-5xl max-w-xl px-3 xl:p-0 xl:pt-4 pb-8">
                         <div className="border-t border-slate-600 xl:border-0 w-full text-center xl:w-auto xl:text-left">
-                            <u className="font-semibold">Inte Tillgänglig</u>
+                            <h1 className="font-semibold pt-4">Inte Tillgänglig</h1>
                         </div>
                     </div>
                 </div>}
