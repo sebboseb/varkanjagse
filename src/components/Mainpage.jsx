@@ -10,13 +10,17 @@ function Mainpage() {
     const [moviemovie, setMovie] = useState([]);
     const [movies, setMovies] = useState([]);
     const [query, setQuery] = useState("");
+    const [style, setStyle] = useState("flex hover:bg-gray-300 transition delay-75 p-1 rounded");
 
     useEffect(() => {
         async function getSearch() {
             const movie = await getSearchRequest(id);
+            movie.sort((b,c) => c.popularity - b.popularity)
             setMovie(movie[0]);
             const where = movie[0].media_type !== 'tv' ? await getWhereRequest(movie[0].id) : await getWhereRequestSeries(movie[0].id);
             setWhere(where);
+
+            setStyle("flex hover:bg-gray-300 transition delay-75 p-1 rounded");
         }
 
         getSearch();
@@ -27,10 +31,9 @@ function Mainpage() {
 
         setQuery(e.target.value);
 
-        fetch(`https://api.themoviedb.org/3/search/multi?api_key=e333684dcb3e9eac6a70505572519a23&language=en-US&query=${query}`).then((res) => res.json()).then((data) => {
+        fetch(`https://api.themoviedb.org/3/search/multi?api_key=e333684dcb3e9eac6a70505572519a23&language=en-US&query=${e.target.value}`).then((res) => res.json()).then((data) => {
             if (!data.errors) {
                 setMovies(data.results);
-                console.log(data.results)
             } else {
                 setMovies([]);
             }
@@ -39,22 +42,22 @@ function Mainpage() {
 
     return (
         <div className="w-screen h-screen xl:h-screen flex flex-col bg-slate-800">
-            <div className="flex w-screen z-50 absolute justify-end">
+            <div className="flex w-screen z-50 absolute justify-center xl:justify-end">
                 <div className="flex flex-col">
-                    <input className=" w-56 mt-4 mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
+                    <input className=" w-72 xl:w-56 mt-4 xl:mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
                     <div className="hover:block" id="searchDiv">
                         <ul className="flex flex-col gap-y-1 p-1">
                             {movies.map((resultMovie, index) => (
                                 resultMovie.media_type === 'tv' ? 
                                 index <= 3 && resultMovie.poster_path &&
-                                    <Link to={`/${resultMovie.name}`}>
-                                    <div className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
+                                    <Link to={`/${resultMovie.name.replace(/ /g, "-")}`}>
+                                    <div onClick={() => setStyle("flex hover:bg-gray-300 transition delay-75 p-1 rounded")} className={style}>
                                         <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
                                         <li className="text-black">{resultMovie.name}</li>
                                     </div>
                                 </Link> : 
-                                index <= 3 && resultMovie.poster_path &&<Link to={`/${resultMovie.title}`}>
-                                    <div className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
+                                index <= 3 && resultMovie.poster_path && <Link to={`/${resultMovie.title.replace(/ /g, "-")}`}>
+                                    <div onClick={() => resultMovie.title.replace(/ /g, "-") !== id ? setStyle("hidden") : setStyle("flex hover:bg-gray-300 transition delay-75 p-1 rounded")} className={style}>
                                         <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
                                         <li className="text-black">{resultMovie.title}</li>
                                     </div>
@@ -79,7 +82,7 @@ function Mainpage() {
                 </div>
             </div>
             <div className=" text-white w-screen flex justify-center bg-slate-800 mt-8 xl:mt-0 z-50">
-                {where.SE && <div className="flex flex-col xl:flex-row gap-y-9 xl:gap-x-3 justify-evenly w-screen xl:border-t border-slate-600 xl:max-w-5xl max-w-xl px-3 xl:p-0">
+                {where.SE && <div className="flex flex-col xl:flex-row gap-y-9 xl:gap-x-3 justify-evenly w-screen xl:border-t border-slate-600 xl:max-w-5xl max-w-xl px-3 xl:p-0 pb-8">
                     {where.SE.buy &&
                         <div className="border-t border-slate-600 xl:border-0 w-full text-center xl:w-auto xl:text-left">
                             <u className="font-semibold">Köp</u>
