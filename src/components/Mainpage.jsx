@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getSearchRequest, getWhereRequest, getWhereRequestSeries } from '../utils/api';
+import { getMovieWithId, getSearchRequest, getTvWithId, getWhereRequest, getWhereRequestSeries } from '../utils/api';
 import { Link } from 'react-router-dom';
 
 function Mainpage() {
@@ -12,17 +12,27 @@ function Mainpage() {
     const [query, setQuery] = useState("");
     const [style, setStyle] = useState("flex flex-col gap-y-1 p-1 transition duration-75");
 
+    const [poster, setPoster] = useState("");
+    const [name, setName] = useState("");
+    const [backdrop, setBackdrop] = useState("");
+
+    const [newRender, setNewRender] = useState(true);
+
+
+
+
     useEffect(() => {
         async function getSearch() {
             const movie = await getSearchRequest(id);
-            // movie.sort((b, c) => c.popularity - b.popularity)
             setMovie(movie[0]);
             const where = movie[0].media_type !== 'tv' ? await getWhereRequest(movie[0].id) : await getWhereRequestSeries(movie[0].id);
             setWhere(where);
         }
 
-        getSearch();
+        newRender && getSearch();
     }, [id]);
+
+    console.log(newRender);
 
     const onChange = (e) => {
         e.preventDefault();
@@ -32,10 +42,44 @@ function Mainpage() {
         fetch(`https://api.themoviedb.org/3/search/multi?api_key=e333684dcb3e9eac6a70505572519a23&language=en-US&query=${e.target.value}`).then((res) => res.json()).then((data) => {
             if (!data.errors) {
                 setMovies(data.results);
+                // console.log(data.results)
+                //    console.log(data.results.reduce((total, item) => {
+                //     const exists = total.find(
+                //         (movie) => (movie.title || movie.name) === (item.title || item.name)
+                //       );
+                //     if (exists) {
+                //       if (exists.vote_count > item.vote_count) {
+                //         return [...total, exists];
+                //       } else {
+                //         return [...total, item];
+                //       }
+                //     } else {
+                //       return [...total, item];
+                //     }
+                //   }, []))
             } else {
                 setMovies([]);
             }
         });
+    }
+
+    async function setMovielol(name, poster, backdrop, media_type, idlol) {
+        setNewRender(false);
+        if (media_type === 'tv') {
+            const movie = await getTvWithId(idlol);
+            setMovie(movie);
+            // console.log(movie);
+        } else {
+            const movie = await getMovieWithId(idlol);
+            setMovie(movie);
+        }
+
+        console.log(moviemovie)
+
+        // setName(name); setPoster(poster); setBackdrop(backdrop);
+        const where = media_type !== 'tv' ? await getWhereRequest(idlol) : await getWhereRequestSeries(idlol);
+        console.log(where)
+        setWhere(where);
     }
 
     return (
@@ -48,13 +92,13 @@ function Mainpage() {
                             {movies.map((resultMovie, index) => (
                                 resultMovie.media_type === 'tv' ?
                                     index <= 3 && resultMovie.poster_path &&
-                                    <Link to={`/${resultMovie.name.replace(/ /g, "-")}`}>
+                                    <Link onClick={() => setMovielol(resultMovie.name, resultMovie.poster_path, resultMovie.backdrop_path, resultMovie.media_type, resultMovie.id)} to={`/${resultMovie.name.replace(/ /g, "-")}`}>
                                         <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
                                             <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
                                             <li className="text-black">{resultMovie.name}</li>
                                         </div>
                                     </Link> :
-                                    index <= 3 && resultMovie.poster_path && resultMovie.id !== 295830 && <Link to={`/${resultMovie.title.replace(/ /g, "-")}`}>
+                                    index <= 3 && resultMovie.poster_path && <Link to={`/${resultMovie.title.replace(/ /g, "-")}`} onClick={() => setMovielol(resultMovie.title, resultMovie.poster_path, resultMovie.backdrop_path, resultMovie.media_type, resultMovie.id)}>
                                         <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
                                             <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
                                             <li className="text-black">{resultMovie.title}</li>

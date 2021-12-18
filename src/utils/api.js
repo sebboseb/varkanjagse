@@ -24,3 +24,21 @@ export async function getWhereRequestSeries(id) {
 
     return serviceseResponse;
 }
+
+export async function getMovieWithId(id) {
+    const searchUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=e333684dcb3e9eac6a70505572519a23&language=en-US`;
+    const response = await fetch(searchUrl);
+    const responseJson = await response.json();
+    const searchResults = responseJson;
+
+    return searchResults;
+}
+
+export async function getTvWithId(id) {
+    const searchUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=e333684dcb3e9eac6a70505572519a23&language=en-US`;
+    const response = await fetch(searchUrl);
+    const responseJson = await response.json();
+    const searchResults = responseJson;
+
+    return searchResults;
+}
