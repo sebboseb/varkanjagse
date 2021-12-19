@@ -10,4 +10,21 @@
     
     input:focus + #searchDiv { display: block; }
     #searchDiv:hover { display: block; }
+
+    #bgImage {
+        background-image: url('E:\Repos\varkanjagse\varkanjagse\public\Comp1.jpg');
+        background-repeat: repeat;
+        @apply w-full h-full;
+        background-size: 10% 100%;
+        animation: slide 10s linear infinite;
+    }
+
+    @keyframes slide{
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-434px, 0, 0);
+  }
+}
 }

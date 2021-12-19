@@ -28,8 +28,6 @@ function Mainpage() {
         newRender && getSearch();
     }, [id, newRender]);
 
-    console.log(newRender);
-
     const onChange = (e) => {
         e.preventDefault();
 
