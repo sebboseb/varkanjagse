@@ -12,10 +12,6 @@ function Mainpage() {
     const [query, setQuery] = useState("");
     const [style, setStyle] = useState("flex flex-col gap-y-1 p-1 transition duration-75");
 
-    const [poster, setPoster] = useState("");
-    const [name, setName] = useState("");
-    const [backdrop, setBackdrop] = useState("");
-
     const [newRender, setNewRender] = useState(true);
 
 
@@ -30,7 +26,7 @@ function Mainpage() {
         }
 
         newRender && getSearch();
-    }, [id]);
+    }, [id, newRender]);
 
     console.log(newRender);
 
