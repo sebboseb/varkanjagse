@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 function Mainpage() {
 
     const { id } = useParams();
-    const { actualId } = useParams();
     const [where, setWhere] = useState([]);
     const [moviemovie, setMovie] = useState([]);
     const [movies, setMovies] = useState([]);

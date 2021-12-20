@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieWithId, getSearchRequest, getTvWithId, getWhereRequest, getWhereRequestSeries } from '../utils/api';
+import { getMovieWithId, getTvWithId, getWhereRequest, getWhereRequestSeries } from '../utils/api';
 import { Link } from 'react-router-dom';
 
 function IdPage() {
@@ -66,7 +66,7 @@ function IdPage() {
         }
 
         newRender && getSearch();
-    }, [id, newRender, actualId]);
+    }, [id, newRender, actualId, mediaType]);
 
     const onChange = (e) => {
         e.preventDefault();
