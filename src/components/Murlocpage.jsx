@@ -38,35 +38,40 @@ function Murlocpage() {
 
     return (
         <div className="text-white h-screen flex flex-col items-center">
-            {/* <h1>Murl</h1> */}
-            <h1 className="text-xl font-semibold">Var kan jag se..?</h1>
-            <div className="flex flex-col">
-                <input onClick={() => setStyle("flex flex-col gap-y-1 p-1")} className=" w-72 xl:w-56 mt-4 xl:mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
-                <div className="hover:block" id="searchDiv">
-                    <ul className={movies.length !== 0 ? style : "hidden"}>
-                        {movies.map((resultMovie, index) => (
-                            resultMovie.media_type === 'tv' ?
-                                index <= 3 && resultMovie.poster_path &&
-                                <Link to={`/${resultMovie.name.replace(/ /g, "-")}`}>
-                                    <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
-                                        <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
-                                        <li className="text-black">{resultMovie.name}</li>
-                                    </div>
-                                </Link> :
-                                index <= 3 && resultMovie.poster_path && <Link to={`/${resultMovie.title.replace(/ /g, "-")}`}>
-                                    <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
-                                        <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
-                                        <li className="text-black">{resultMovie.title}</li>
-                                    </div>
-                                </Link>
-                        ))}
-                    </ul>
+            <div className="z-10 text-white h-screen flex flex-col items-center">
+                {/* <h1>Murl</h1> */}
+                <h1 className="text-xl font-semibold mt-24">Var kan jag se..?</h1>
+                <div className="flex flex-col">
+                    <input onClick={() => setStyle("flex flex-col gap-y-1 p-1")} className=" w-72 xl:w-56 mt-4 xl:mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
+                    <div className="hover:block" id="searchDiv">
+                        <ul className={movies.length !== 0 ? style : "hidden"}>
+                            {movies.map((resultMovie, index) => (
+                                resultMovie.media_type === 'tv' ?
+                                    index <= 3 && resultMovie.poster_path &&
+                                    <Link to={`/${resultMovie.name.replace(/ /g, "-")}`}>
+                                        <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
+                                            <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
+                                            <li className="text-black">{resultMovie.name}</li>
+                                        </div>
+                                    </Link> :
+                                    index <= 3 && resultMovie.poster_path && <Link to={`/${resultMovie.title.replace(/ /g, "-")}`}>
+                                        <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
+                                            <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
+                                            <li className="text-black">{resultMovie.title}</li>
+                                        </div>
+                                    </Link>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
+                <h1 className="text-center">Du kan också söka direkt genom att lägga till /filmtitel i hemsidans namn</h1>
+                <p>Till exempel <span className="font-semibold"><Link to="/gladiator">varkanjag.se/gladiator</Link></span></p>
             </div>
-            <h1 className="text-center">Du kan söka direkt genom att lägga till /filmtitel i hemsidans namn</h1>
-            <p>Till exempel <span className="font-semibold"><Link to="/gladiator">varkanjag.se/gladiator</Link></span></p>
-            <div className="w-screen overflow-hidden">
-                <div className="w-[100vw] h-44 overflow-hidden -skew-y-12 xl:-skew-y-0 bg-black shadow-lg shadow-slate-700 absolute top-1/4">
+            <div className="w-screen overflow-hidden h-screen">
+                <div className="top-0">
+                    <h1 className="text-center">Trött på att scrolla mellan oändliga streamingtjänster?</h1>
+                </div>
+                <div className="w-[100vw] h-44 overflow-hidden -skew-y-12 xl:-skew-y-0 bg-black shadow-lg shadow-slate-700 absolute top-1/4 xl:bottom-0 xl:top-auto">
                     {/* <img className="w-2/4 bg-repeat" src="./Comp1.jpg" alt="" /> */}
                     <div id="bgImage"></div>
                 </div>
