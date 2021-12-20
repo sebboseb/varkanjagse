@@ -46,7 +46,7 @@ function Murlocpage() {
                     <p className="pt-1">Till exempel <span className="font-semibold z-50"><Link to="/gladiator">varkanjag.se/gladiator</Link></span></p>
                 </div>
                 <div className="flex flex-col">
-                    <input onClick={() => setStyle("flex flex-col gap-y-1 p-1")} className=" w-72 xl:w-56 mt-3 xl:mr-8 rounded p-1 px-5 text-black" type="text" placeholder="Sök film eller serie" value={query} onChange={onChange} />
+                    <input onClick={() => setStyle("flex flex-col gap-y-1 p-1")} className=" w-72 xl:w-56 mt-3 rounded p-1 px-5 text-black" type="text" placeholder="Sök film eller serie" value={query} onChange={onChange} />
                     <div className="hover:block" id="searchDiv">
                         <ul className={movies.length !== 0 ? style : "hidden"}>
                             {movies.map((resultMovie, index) => (
