@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Murlocpage() {
 
     const [query, setQuery] = useState("");
-    const [style, setStyle] = useState("flex flex-col gap-y-1 p-1 transition duration-75");
+    const [style, setStyle] = useState("flex flex-col gap-y-1 p-1 transition duration-75 absolute");
     const [movies, setMovies] = useState([]);
 
     const onChange = (e) => {
@@ -38,11 +38,11 @@ function Murlocpage() {
 
     return (
         <div className="text-white h-screen flex flex-col items-center">
-            <div className="z-10 text-white h-screen flex flex-col items-center">
+            <div className="z-10 text-white flex flex-col items-center">
                 {/* <h1>Murl</h1> */}
-                <h1 className="text-xl font-semibold mt-24">Var kan jag se..?</h1>
+                <h1 className="text-xl font-semibold mt-96">Var kan jag se..?</h1>
                 <div className="flex flex-col">
-                    <input onClick={() => setStyle("flex flex-col gap-y-1 p-1")} className=" w-72 xl:w-56 mt-4 xl:mr-8 rounded p-1 px-5 focus:bg-blue-100" type="text" placeholder="Sök" value={query} onChange={onChange} />
+                    <input onClick={() => setStyle("flex flex-col gap-y-1 p-1")} className=" w-72 xl:w-56 mt-4 xl:mr-8 rounded p-1 px-5 text-black" type="text" placeholder="Sök film eller serie" value={query} onChange={onChange} />
                     <div className="hover:block" id="searchDiv">
                         <ul className={movies.length !== 0 ? style : "hidden"}>
                             {movies.map((resultMovie, index) => (
@@ -64,16 +64,17 @@ function Murlocpage() {
                         </ul>
                     </div>
                 </div>
-                <h1 className="text-center">Du kan söka direkt genom att lägga till /filmtitel i hemsidans namn</h1>
-                <p>Till exempel <span className="font-semibold"><Link to="/gladiator">varkanjag.se/gladiator</Link></span></p>
             </div>
             <div className="w-screen overflow-hidden">
-                <div className="w-[100vw] h-72 overflow-hidden -skew-y-12 xl:-skew-y-0 bg-black shadow-lg shadow-slate-700 absolute -top-24 xl:bottom-0 xl:top-auto">
+                <div className="w-[100vw] h-72 overflow-hidden -skew-y-12 xl:-skew-y-0 bg-black shadow-lg shadow-slate-700 absolute -top-24 xl:-top-14 xl:h-56">
                     {/* <img className="w-2/4 bg-repeat" src="./Comp1.jpg" alt="" /> */}
                     <div id="bgImage"></div>
                 </div>
             </div>
-            
+            <div className="text-center h-screen flex flex-col justify-end mb-44">
+                    <h1>Du kan söka direkt genom att lägga till /filmtitel i hemsidans namn</h1>
+                    <p>Till exempel <span className="font-semibold z-50"><Link to="/gladiator">varkanjag.se/gladiator</Link></span></p>
+            </div>
         </div>
     )
 }

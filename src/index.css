@@ -12,10 +12,10 @@
     #searchDiv:hover { display: block; }
 
     #bgImage {
-        background-image: url('Comp1.jpg');
+        background-image: url('Artboard1.png');
         background-repeat: repeat;
         @apply w-[200%] h-full;
-        background-size: 30% 100%;
+        background-size: 30% 110%;
         animation: slide 7s linear infinite;
         overflow: hidden;
     }
@@ -27,5 +27,12 @@
   100% {
     transform: translate3d(-60vw, 0, 0);
   }
+}
+
+@media (min-width: 1280px) {
+    #bgImage {
+        background-size: 10% 110%;
+        animation: slide 25s linear infinite;
+    }
 }
 }
