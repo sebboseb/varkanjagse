@@ -3,10 +3,9 @@ import { useParams } from 'react-router-dom';
 import { getMovieWithId, getSearchRequest, getTvWithId, getWhereRequest, getWhereRequestSeries } from '../utils/api';
 import { Link } from 'react-router-dom';
 
-function Mainpage() {
+function IdPage() {
 
-    const { id } = useParams();
-    const { actualId } = useParams();
+    const { id, mediaType, actualId } = useParams();
     const [where, setWhere] = useState([]);
     const [moviemovie, setMovie] = useState([]);
     const [movies, setMovies] = useState([]);
@@ -22,10 +21,21 @@ function Mainpage() {
 
     useEffect(() => {
         async function getSearch() {
-            const movie = await getSearchRequest(id);
-            setMovie(movie[0]);
-            const where = movie[0].media_type !== 'tv' ? await getWhereRequest(movie[0].id) : await getWhereRequestSeries(movie[0].id);
-            setWhere(where);
+            if (mediaType === "movie") {
+                const movie = await getMovieWithId(actualId);
+                setMovie(movie);
+                const where = await getWhereRequest(actualId);
+                setWhere(where);
+            } else {
+                const movie = await getTvWithId(actualId);
+                setMovie(movie);
+                const where = await getWhereRequestSeries(actualId);
+                setWhere(where);
+            }
+            // const movie = await get(id);
+            // setMovie(movie[0]);
+            // const where = movie[0].media_type !== 'tv' ? await getWhereRequest(movie[0].id) : await getWhereRequestSeries(movie[0].id);
+            // setWhere(where);
 
 
 
@@ -56,7 +66,7 @@ function Mainpage() {
         }
 
         newRender && getSearch();
-    }, [id, newRender]);
+    }, [id, newRender, actualId]);
 
     const onChange = (e) => {
         e.preventDefault();
@@ -224,4 +234,4 @@ function Mainpage() {
     )
 }
 
-export default Mainpage;
+export default IdPage;

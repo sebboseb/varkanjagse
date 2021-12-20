@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Murlocpage() {
 
@@ -52,13 +52,13 @@ function Murlocpage() {
                             {movies.map((resultMovie, index) => (
                                 resultMovie.media_type === 'tv' ?
                                     index <= 3 && resultMovie.poster_path &&
-                                    <Link to={`/${resultMovie.name.replace(/ /g, "-")}`}>
+                                    <Link to={`/${resultMovie.name.replace(/ /g, "-")}/${resultMovie.media_type}/${resultMovie.id}`}>
                                         <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
                                             <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
                                             <li className="text-black">{resultMovie.name}</li>
                                         </div>
                                     </Link> :
-                                    index <= 3 && resultMovie.poster_path && <Link to={`/${resultMovie.title.replace(/ /g, "-")}`}>
+                                    index <= 3 && resultMovie.poster_path && <Link to={`/${resultMovie.title.replace(/ /g, "-")}/${resultMovie.media_type}/${resultMovie.id}`}>
                                         <div onClick={() => setStyle("hidden")} className="flex hover:bg-gray-300 transition delay-75 p-1 rounded">
                                             <img className=" w-12 border border-white rounded" src={`https://image.tmdb.org/t/p/original${resultMovie.poster_path}`} alt="" />
                                             <li className="text-black">{resultMovie.title}</li>

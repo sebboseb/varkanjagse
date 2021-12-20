@@ -3,6 +3,7 @@ import Mainpage from "./components/Mainpage";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Murlocpage from "./components/Murlocpage";
 import './index.css';
+import IdPage from "./components/IdPage";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Murlocpage></Murlocpage>}></Route>
         <Route exact path="/:id" element={<Mainpage></Mainpage>}></Route>
+        <Route exact path="/:id/:mediaType/:actualId" element={<IdPage></IdPage>}></Route>
       </Routes>
     </Router>
     </div>
