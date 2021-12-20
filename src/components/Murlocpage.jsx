@@ -38,7 +38,7 @@ function Murlocpage() {
 
     return (
         <div className="text-white h-screen flex flex-col items-center">
-            <div className="z-10 text-white flex flex-col items-center">
+            <div className="z-10 text-white flex flex-col items-center h-screen">
                 {/* <h1>Murl</h1> */}
                 <h1 className="text-xl font-semibold mt-96">Var kan jag se..?</h1>
                 <div className="flex flex-col">
@@ -71,7 +71,7 @@ function Murlocpage() {
                     <div id="bgImage"></div>
                 </div>
             </div>
-            <div className="text-center h-screen flex flex-col justify-end mb-44">
+            <div className="text-center relative bottom-56">
                     <h1>Du kan söka direkt genom att lägga till /filmtitel i hemsidans namn</h1>
                     <p>Till exempel <span className="font-semibold z-50"><Link to="/gladiator">varkanjag.se/gladiator</Link></span></p>
             </div>
