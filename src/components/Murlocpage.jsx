@@ -40,11 +40,11 @@ function Murlocpage() {
         <div className="text-white h-screen flex flex-col items-center">
             <div className="z-10 text-white flex flex-col items-center h-screen gap-y-1">
                 {/* <h1>Murl</h1> */}
-                <h1 className="text-xl font-semibold mt-96">Var kan jag se..?</h1>
+                <h1 className="text-xl font-semibold mt-80">Var kan jag se..?</h1>
                 <div className="text-center">
                     <h1>Du kan söka direkt genom att lägga till /filmtitel i hemsidans namn</h1>
                     <p className="pt-1">Till exempel <span className="font-semibold z-50"><Link to="/gladiator">varkanjag.se/gladiator</Link></span></p>
-            </div>
+                </div>
                 <div className="flex flex-col">
                     <input onClick={() => setStyle("flex flex-col gap-y-1 p-1")} className=" w-72 xl:w-56 mt-3 xl:mr-8 rounded p-1 px-5 text-black" type="text" placeholder="Sök film eller serie" value={query} onChange={onChange} />
                     <div className="hover:block" id="searchDiv">
