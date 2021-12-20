@@ -64,18 +64,16 @@ function Murlocpage() {
                         </ul>
                     </div>
                 </div>
-                <h1 className="text-center">Du kan också söka direkt genom att lägga till /filmtitel i hemsidans namn</h1>
+                <h1 className="text-center">Du kan söka direkt genom att lägga till /filmtitel i hemsidans namn</h1>
                 <p>Till exempel <span className="font-semibold"><Link to="/gladiator">varkanjag.se/gladiator</Link></span></p>
             </div>
-            <div className="w-screen overflow-hidden h-screen">
-                <div className="top-0">
-                    <h1 className="text-center">Trött på att scrolla mellan oändliga streamingtjänster?</h1>
-                </div>
-                <div className="w-[100vw] h-44 overflow-hidden -skew-y-12 xl:-skew-y-0 bg-black shadow-lg shadow-slate-700 absolute top-1/4 xl:bottom-0 xl:top-auto">
+            <div className="w-screen overflow-hidden">
+                <div className="w-[100vw] h-72 overflow-hidden -skew-y-12 xl:-skew-y-0 bg-black shadow-lg shadow-slate-700 absolute -top-24 xl:bottom-0 xl:top-auto">
                     {/* <img className="w-2/4 bg-repeat" src="./Comp1.jpg" alt="" /> */}
                     <div id="bgImage"></div>
                 </div>
             </div>
+            
         </div>
     )
 }
