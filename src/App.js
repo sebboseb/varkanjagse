@@ -7,7 +7,7 @@ import './index.css';
 
 function App() {
   return (
-    <div className="bg-slate-800 min-h-full overflow-hidden">
+    <div className="bg-slate-800 min-h-full">
     <Router>
       <Routes>
         <Route exact path="/" element={<Murlocpage></Murlocpage>}></Route>
